@@ -1,0 +1,49 @@
+.trading-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--spacing-md);
+}
+
+.order-panel {
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-md);
+}
+
+.order-group { margin-bottom: var(--spacing-md); }
+.order-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.trade-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+.trade-actions .btn { flex: 1; }.trading-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--spacing-md);
+}
+
+.order-panel {
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-md);
+}
+
+.order-group { margin-bottom: var(--spacing-md); }
+.order-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.trade-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+.trade-actions .btn { flex: 1; }

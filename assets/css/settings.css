@@ -1,0 +1,15 @@
+.settings-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--spacing-md);
+}
+.settings-nav ul { list-style: none; }
+.settings-nav li {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+}
+.settings-nav li.active {
+  background-color: var(--color-panel-hover);
+  border-left-color: var(--color-accent);
+}

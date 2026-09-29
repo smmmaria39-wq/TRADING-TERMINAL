@@ -1,0 +1,81 @@
+:root {
+  /* Core Backgrounds */
+  --color-bg: #0e1117;
+  --color-panel: #161b22;
+  --color-panel-hover: #1c2128;
+  --color-border: #30363d;
+
+  /* Typography */
+  --color-text: #c9d1d9;
+  --color-text-muted: #8b949e;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", "Roboto Mono", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Trading Colors */
+  --color-accent: #58a6ff;
+  --color-success: #3fb950;   /* Bullish / Buy */
+  --color-danger: #f85149;     /* Bearish / Sell */
+  --color-warning: #d29922;   /* Warning / No Trade */
+  --color-info: #58a6ff;
+
+  /* Spacing & Layout */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --sidebar-width: 240px;
+  --topbar-height: 48px;
+
+  /* Strict: No rounded edges */
+  --radius: 0; 
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1, h2, h3, h4 { font-weight: 600; line-height: 1.25; }
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.15rem; }
+h3 { font-size: 1rem; }
+
+/* Form Controls */
+.form-control {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 6px 10px;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  border-radius: var(--radius);
+  outline: none;
+}
+.form-control:focus { border-color: var(--color-accent); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background-color 0.1s ease;
+}
+.btn-primary { background-color: var(--color-accent); color: #fff; }
+.btn-primary:hover { background-color: #4c96e0; }
+.btn-danger { background-color: var(--color-danger); color: #fff; }
+.btn-secondary { background-color: var(--color-panel-hover); color: var(--color-text); border-color: var(--color-border); }
+.btn-secondary:hover { background-color: #2d333b; }

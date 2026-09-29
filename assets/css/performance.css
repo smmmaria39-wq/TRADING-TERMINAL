@@ -1,0 +1,6 @@
+.performance-summary {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: var(--spacing-md);
+ margin-bottom: var(--spacing-md);
+}

@@ -1,0 +1,164 @@
+/* Panels & Cards (Strict: No rounded edges) */
+.panel {
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  margin-bottom: var(--spacing-md);
+}
+
+.panel-header {
+  padding: 10px var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-panel-hover);
+}
+
+.panel-header h2 { font-size: 0.95rem; font-weight: 600; }
+
+.panel-body { padding: var(--spacing-md); }
+
+/* Grids & Data */
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.data-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.data-item .label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+.data-item .value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+/* State Indicators */
+.loading-state, .empty-state {
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--spacing-lg);
+  font-size: 0.9rem;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%; /* Dots can be circles */
+  margin-right: 6px;
+}
+.status-dot.connected { background-color: var(--color-success); }
+.status-dot.disconnected { background-color: var(--color-danger); }
+
+/* Tables */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.table th, .table td {
+  padding: 8px var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+.table th { color: var(--color-text-muted); font-weight: 500; }
+/* Sidebar Navigation Links */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-sm) 0;
+    flex: 1;
+}
+
+.sidebar-logo {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
+.nav-link {
+    display: block;
+    padding: 10px var(--spacing-md);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-left: 3px solid transparent;
+    transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+.nav-link:hover {
+    background-color: var(--color-panel-hover);
+    color: var(--color-text);
+}
+
+.nav-link.active {
+    background-color: var(--color-panel-hover);
+    color: var(--color-accent);
+    border-left-color: var(--color-accent);
+}
+
+/* Topbar specific */
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-left: auto;
+}
+
+.topbar-search {
+    flex: 1;
+    max-width: 400px;
+    margin: 0 var(--spacing-md);
+}
+
+.icon-btn {
+    padding: 6px 10px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.hamburger-icon {
+    display: block;
+    width: 16px;
+    height: 2px;
+    background: var(--color-text);
+    position: relative;
+}
+.hamburger-icon::before, .hamburger-icon::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background: var(--color-text);
+    left: 0;
+}
+.hamburger-icon::before { top: -5px; }
+.hamburger-icon::after { top: 5px; }
+/* Add this to the bottom of assets/css/components.css */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-link svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.nav-link.active svg {
+  opacity: 1;
+}
