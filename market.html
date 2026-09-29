@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Market Workspace | Forex Analysis Terminal</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css"> <!-- Added missing CSS -->
+    <link rel="stylesheet" href="../assets/css/market.css">
+    <link rel="stylesheet" href="../assets/css/analysis.css"> <!-- Added for table styles -->
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar-container">
+            <div class="loading-state">Loading navigation...</div>
+        </aside>
+
+        <div class="main-content">
+            <header class="topbar" id="topbar-container"></header>
+
+            <main class="page-content market-workspace">
+                <!-- Market Header -->
+                <section class="market-header">
+                    <div class="symbol-info">
+                        <select id="market-symbol-selector" class="form-control" aria-label="Select symbol">
+                            <option value="">Select Symbol</option>
+                        </select>
+                        <div class="price-display">
+                            <span class="bid" id="market-bid">—</span>
+                            <span class="ask" id="market-ask">—</span>
+                        </div>
+                    </div>
+                    <div class="market-stats">
+                        <div class="stat"><span>Spread:</span> <span id="market-spread">—</span></div>
+                        <div class="stat"><span>Volatility:</span> <span id="market-volatility">—</span></div>
+                        <div class="stat"><span>Session:</span> <span id="market-session">—</span></div>
+                    </div>
+                </section>
+
+                <!-- Main Chart -->
+                <section class="panel chart-panel">
+                    <div class="panel-header">
+                        <div class="timeframe-selector">
+                            <button class="tf-btn">M1</button>
+                            <button class="tf-btn active">M5</button>
+                            <button class="tf-btn">M15</button>
+                            <button class="tf-btn">H1</button>
+                            <button class="tf-btn">H4</button>
+                            <button class="tf-btn">D1</button>
+                        </div>
+                    </div>
+                    <div class="panel-body" id="market-chart-container" style="height: 500px;">
+                        <!-- Chart injected here -->
+                    </div>
+                </section>
+
+                <!-- Watchlist & Indicators -->
+                <div class="grid-2-col">
+                    <section class="panel">
+                        <div class="panel-header"><h2>Watchlist</h2></div>
+                        <div class="panel-body" id="watchlist-container">
+                            <!-- Watchlist injected here -->
+                        </div>
+                    </section>
+
+                    <section class="panel">
+                        <div class="panel-header"><h2>Technical Indicators</h2></div>
+                        <div class="panel-body" id="market-indicators-container">
+                            <!-- Indicators injected here -->
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Fixed script path -->
+    <script type="module" src="../assets/js/app.js"></script>
+    <script type="module" src="../assets/js/market/market.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  
+    <title>Watchlist | Forex Terminal</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/market.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar-container">
+            <div class="loading-state">Loading navigation...</div>
+        </aside>
+        <div class="main-content">
+            <header class="topbar" id="topbar-container"></header>
+            <main class="page-content">
+                <section class="page-header">
+                    <h1>Watchlist</h1>
+                </section>
+                <section class="panel">
+                    <div class="panel-body" id="watchlist-grid">
+                        <!-- Market cards injected here -->
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    
+    <script type="module" src="../assets/js/app.js"></script>
+    <script type="module" src="../assets/js/market/watchlist.js"></script>
+</body>
+</html>

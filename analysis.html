@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  
+    <title>Market Analysis | Forex Analysis Terminal</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css"> <!-- Added for table styles -->
+    <link rel="stylesheet" href="../assets/css/analysis.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar-container">
+            <div class="loading-state">Loading navigation...</div>
+        </aside>
+
+        <div class="main-content">
+            <header class="topbar" id="topbar-container"></header>
+
+            <main class="page-content">
+                <section class="page-header">
+                    <h1>Market Analysis</h1>
+                    <select id="analysis-symbol-selector" class="form-control">
+                        <option value="">Select Symbol</option>
+                    </select>
+                </section>
+
+                <!-- Technical Analysis -->
+                <section class="panel">
+                    <div class="panel-header"><h2>Technical Indicators</h2></div>
+                    <div class="panel-body" id="technical-analysis-container">
+                        <div class="loading-state">Fetching technical indicators...</div>
+                    </div>
+                </section>
+
+                <!-- Price Action & Structure Grid -->
+                <div class="grid-2-col">
+                    <section class="panel">
+                        <div class="panel-header"><h2>Price Action</h2></div>
+                        <div class="panel-body" id="price-action-container">
+                            <div class="empty-state">No patterns detected</div>
+                        </div>
+                    </section>
+                    <section class="panel">
+                        <div class="panel-header"><h2>Market Structure</h2></div>
+                        <div class="panel-body" id="market-structure-container">
+                            <div class="empty-state">No structural data</div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Multi-Timeframe & Regime -->
+                <div class="grid-2-col">
+                    <section class="panel">
+                        <div class="panel-header"><h2>Multi-Timeframe Alignment</h2></div>
+                        <div class="panel-body" id="mtf-container">
+                            <div class="loading-state">Loading MTF data...</div>
+                        </div>
+                    </section>
+                    <section class="panel">
+                        <div class="panel-header"><h2>Market Regime</h2></div>
+                        <div class="panel-body" id="regime-container">
+                            <div class="empty-state">Detecting regime...</div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Fundamentals & Sentiment -->
+                <div class="grid-2-col">
+                    <section class="panel">
+                        <div class="panel-header"><h2>Fundamentals</h2></div>
+                        <div class="panel-body" id="fundamentals-container">
+                            <div class="empty-state">No upcoming events</div>
+                        </div>
+                    </section>
+                    <section class="panel">
+                        <div class="panel-header"><h2>Sentiment</h2></div>
+                        <div class="panel-body" id="sentiment-container">
+                            <div class="empty-state">No sentiment data</div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script type="module" src="../assets/js/app.js"></script>
+    <script type="module" src="../assets/js/analysis/analysis.js"></script>
+</body>
+</html>

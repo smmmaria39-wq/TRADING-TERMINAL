@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Trading | Forex Terminal</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/trades.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar-container">
+            <div class="loading-state">Loading navigation...</div>
+        </aside>
+        <div class="main-content">
+            <header class="topbar" id="topbar-container"></header>
+            <main class="page-content">
+                <section class="page-header">
+                    <h1>Trading</h1>
+                </section>
+                <div class="trading-layout">
+                    <!-- Order Panel -->
+                    <section class="panel order-panel">
+                        <div class="panel-header"><h2>Place Order</h2></div>
+                        <div class="panel-body">
+                            <div class="order-group">
+                                <label for="trade-symbol">Symbol</label>
+                                <select id="trade-symbol" class="form-control">
+                                    <option value="">Select Symbol</option>
+                                    <option value="EURUSD">EURUSD</option>
+                                    <option value="GBPUSD">GBPUSD</option>
+                                </select>
+                            </div>
+                            <div class="order-group">
+                                <label for="trade-size">Lot Size</label>
+                                <input type="number" id="trade-size" class="form-control" placeholder="0.01" step="0.01">
+                            </div>
+                            <div class="order-group">
+                                <label for="trade-sl">Stop Loss</label>
+                                <input type="number" id="trade-sl" class="form-control" placeholder="0.0000" step="0.0001">
+                            </div>
+                            <div class="order-group">
+                                <label for="trade-tp">Take Profit</label>
+                                <input type="number" id="trade-tp" class="form-control" placeholder="0.0000" step="0.0001">
+                            </div>
+                            <div class="trade-actions">
+                                <!-- Added IDs for JS hooking -->
+                                <button class="btn btn-success" id="trade-buy-btn">Buy</button>
+                                <button class="btn btn-danger" id="trade-sell-btn">Sell</button>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Trade History -->
+                    <section class="panel">
+                        <div class="panel-header"><h2>Trade History</h2></div>
+                        <div class="panel-body" id="trade-history-container">
+                            <!-- Table injected here -->
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script type="module" src="../assets/js/app.js"></script>
+    <script type="module" src="../assets/js/trading/trades.js"></script>
+</body>
+</html>

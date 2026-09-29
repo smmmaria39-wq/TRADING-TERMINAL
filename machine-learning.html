@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Machine Learning | Forex Terminal</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/machine-learning.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar-container">
+            <div class="loading-state">Loading navigation...</div>
+        </aside>
+        <div class="main-content">
+            <header class="topbar" id="topbar-container"></header>
+            <main class="page-content">
+                <section class="page-header">
+                    <h1>Machine Learning</h1>
+                </section>
+                <div class="ml-status-grid">
+                    <section class="panel">
+                        <div class="panel-header"><h2>Model Status</h2></div>
+                        <div class="panel-body" id="ml-status-container">
+                            <!-- Status injected here -->
+                        </div>
+                    </section>
+                    <section class="panel">
+                        <div class="panel-header"><h2>Predictions</h2></div>
+                        <div class="panel-body" id="ml-predictions-container">
+                            <!-- Predictions injected here -->
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Fixed script path -->
+    <script type="module" src="../assets/js/app.js"></script>
+    <script type="module" src="../assets/js/machine-learning/machineLearning.js"></script>
+</body>
+</html>
