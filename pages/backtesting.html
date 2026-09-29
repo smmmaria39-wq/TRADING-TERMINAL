@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  
+    <title>Backtesting | Forex Terminal</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/backtesting.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar-container">
+            <div class="loading-state">Loading navigation...</div>
+        </aside>
+        <div class="main-content">
+            <header class="topbar" id="topbar-container"></header>
+            <main class="page-content">
+                <section class="page-header">
+                    <h1>Backtesting</h1>
+                </section>
+                <div class="backtest-layout">
+                    <section class="panel">
+                        <div class="panel-header"><h2>Configuration</h2></div>
+                        <div class="panel-body">
+                            <form id="backtest-form">
+                                <div class="order-group">
+                                    <label for="backtest-strategy">Strategy</label>
+                                    <select id="backtest-strategy" class="form-control">
+                                        <option value="TrendFollowing">Trend Following</option>
+                                        <option value="Breakout">Breakout</option>
+                                        <option value="MeanReversion">Mean Reversion</option>
+                                    </select>
+                                </div>
+                                <div class="order-group">
+                                    <label for="backtest-symbol">Symbol</label>
+                                    <select id="backtest-symbol" class="form-control">
+                                        <option value="EURUSD">EURUSD</option>
+                                        <option value="GBPUSD">GBPUSD</option>
+                                    </select>
+                                </div>
+                                <div class="order-group">
+                                    <label for="backtest-start">Start Date</label>
+                                    <input type="date" id="backtest-start" class="form-control">
+                                </div>
+                                <div class="order-group">
+                                    <label for="backtest-end">End Date</label>
+                                    <input type="date" id="backtest-end" class="form-control">
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width:100%">Run Backtest</button>
+                            </form>
+                        </div>
+                    </section>
+                    <section class="panel">
+                        <div class="panel-header"><h2>Results</h2></div>
+                        <div class="panel-body" id="backtest-results-container">
+                            <!-- Results injected here -->
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Fixed script path -->
+    <script type="module" src="../assets/js/app.js"></script>
+    <script type="module" src="../assets/js/backtesting/backtesting.js"></script>
+</body>
+</html>

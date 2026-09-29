@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Trade Signals | Forex Analysis Terminal</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css"> <!-- Added missing CSS -->
+    <link rel="stylesheet" href="../assets/css/signals.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar-container">
+            <div class="loading-state">Loading navigation...</div>
+        </aside>
+
+        <div class="main-content">
+            <header class="topbar" id="topbar-container"></header>
+
+            <main class="page-content">
+                <section class="page-header">
+                    <h1>Trade Signals</h1>
+                    <div class="filter-controls">
+                        <button class="btn btn-secondary">All</button>
+                        <button class="btn btn-secondary">Active</button>
+                        <button class="btn btn-secondary">History</button>
+                    </div>
+                </section>
+
+                <!-- Signals List -->
+                <section class="signals-list" id="signals-list-container">
+                    <!-- Signal Cards injected here -->
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Fixed script path -->
+    <script type="module" src="../assets/js/app.js"></script>
+    <script type="module" src="../assets/js/signals/signals.js"></script>
+</body>
+</html>
