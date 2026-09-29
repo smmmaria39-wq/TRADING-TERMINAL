@@ -1,0 +1,12 @@
+{
+  "name": "forex-analysis-frontend",
+  "version": "1.0.0",
+  "description": "Production Frontend for Forex Trading Analysis Platform",
+  "scripts": {
+    "dev": "npx http-server -p 8080 -c-1",
+    "test": "echo \"Error: no tests specified\" && exit 1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

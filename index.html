@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Terminal | Loading</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--color-bg);
+            color: var(--color-text-muted);
+            font-family: var(--font-sans);
+        }
+    </style>
+</head>
+<body>
+    <div class="initial-loader">
+        Loading Trading Terminal...
+    </div>
+
+    <script type="module">
+        import './assets/js/config.js';
+        import checkAuthState from './assets/js/auth.js';
+
+        // Immediately check auth state and route the user
+        (async () => {
+            try {
+                const isAuthenticated = await checkAuthState();
+                if (isAuthenticated) {
+                    window.location.href = './pages/dashboard.html';
+                } else {
+                    window.location.href = './login.html';
+                }
+            } catch (error) {
+                console.error('Initialization error:', error);
+                window.location.href = './login.html';
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Forex Terminal</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--color-bg);
+        }
+        .login-card {
+            background-color: var(--color-panel);
+            border: 1px solid var(--color-border);
+            width: 100%;
+            max-width: 360px;
+            padding: var(--spacing-lg);
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        .login-header h1 { font-size: 1.25rem; margin-bottom: 4px; }
+        .login-header p { color: var(--color-text-muted); font-size: 0.85rem; }
+        .form-group { margin-bottom: var(--spacing-md); }
+        .form-group label { display: block; font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 6px; }
+        .form-group input { width: 100%; }
+        .login-error {
+            color: var(--color-danger);
+            font-size: 0.85rem;
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+            display: none; /* Hidden by default */
+        }
+        .login-btn { width: 100%; padding: 10px; }
+    </style>
+</head>
+<body>
+    <main class="login-card">
+        <div class="login-header">
+            <h1>Forex Terminal</h1>
+            <p>Sign in to access the trading dashboard</p>
+        </div>
+
+        <div class="login-error" id="login-error">
+            Invalid credentials or server unreachable.
+        </div>
+
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" required autocomplete="current-password">
+            </div>
+            <button type="submit" class="btn btn-primary login-btn" id="login-btn">Sign In</button>
+        </form>
+    </main>
+
+    <script type="module">
+        import login from './assets/js/auth.js';
+        import { API_BASE_URL } from './assets/js/config.js';
+
+        const form = document.getElementById('login-form');
+        const errorContainer = document.getElementById('login-error');
+        const loginBtn = document.getElementById('login-btn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorContainer.style.display = 'none';
+            loginBtn.textContent = 'Signing in...';
+            loginBtn.disabled = true;
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // Call the auth module to handle backend login
+                const success = await login(email, password);
+                if (success) {
+                    window.location.href = './pages/dashboard.html';
+                } else {
+                    throw new Error('Authentication failed');
+                }
+            } catch (error) {
+                errorContainer.style.display = 'block';
+                errorContainer.textContent = error.message || 'Login failed. Check credentials.';
+                loginBtn.textContent = 'Sign In';
+                loginBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
