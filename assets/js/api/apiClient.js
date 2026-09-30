@@ -25,7 +25,16 @@ class ApiClient {
         throw new Error(errorData.message || `API Error: ${response.status}`);
       }
       
-      return response.json();
+      // FIX: Safely handle empty responses (like 204 No Content or 304 Not Modified)
+      if (response.status === 204 || response.status === 304) {
+        return { success: true, data: [] };
+      }
+      
+      const text = await response.text();
+      // If body is empty, return a safe default object
+      if (!text) return { success: true, data: [] };
+      
+      return JSON.parse(text);
     } catch (error) {
       if (error.message === 'Failed to fetch' || error.message === 'Load failed') {
         throw new Error('Unable to connect to the trading server.');
