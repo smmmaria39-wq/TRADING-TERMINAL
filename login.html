@@ -13,6 +13,7 @@
             align-items: center;
             height: 100vh;
             background-color: var(--color-bg);
+            margin: 0;
         }
         .login-card {
             background-color: var(--color-panel);
@@ -20,6 +21,7 @@
             width: 100%;
             max-width: 360px;
             padding: var(--spacing-lg);
+            box-sizing: border-box;
         }
         .login-header {
             text-align: center;
@@ -29,7 +31,7 @@
         .login-header p { color: var(--color-text-muted); font-size: 0.85rem; }
         .form-group { margin-bottom: var(--spacing-md); }
         .form-group label { display: block; font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 6px; }
-        .form-group input { width: 100%; }
+        .form-group input { width: 100%; box-sizing: border-box; }
         .login-error {
             color: var(--color-danger);
             font-size: 0.85rem;
@@ -37,7 +39,7 @@
             text-align: center;
             display: none; /* Hidden by default */
         }
-        .login-btn { width: 100%; padding: 10px; }
+        .login-btn { width: 100%; padding: 10px; box-sizing: border-box; }
     </style>
 </head>
 <body>
@@ -65,7 +67,6 @@
     </main>
 
     <script type="module">
-        // FIX: Import the default export instead of a named export that doesn't exist
         import auth from './assets/js/auth.js';
 
         const form = document.getElementById('login-form');
@@ -73,8 +74,10 @@
         const loginBtn = document.getElementById('login-btn');
 
         form.addEventListener('submit', async (e) => {
-            // This prevents the page from refreshing
+            // Prevents the browser from doing a native page refresh
             e.preventDefault();
+            
+            // Reset UI state
             errorContainer.style.display = 'none';
             loginBtn.textContent = 'Signing in...';
             loginBtn.disabled = true;
@@ -83,21 +86,21 @@
             const password = document.getElementById('password').value;
 
             try {
-                // Call the login function from the auth object
                 const success = await auth.login(email, password);
                 if (success) {
                     window.location.href = './pages/dashboard.html';
                 } else {
-                    throw new Error('Authentication failed');
+                    throw new Error('Authentication failed.');
                 }
             } catch (error) {
-                // Show error on the page AND in an alert so you can see it on your phone
+                // Display meaningful error to the user
                 errorContainer.style.display = 'block';
                 errorContainer.textContent = error.message || 'Login failed. Check credentials.';
                 
+                // Log to console for debugging without exposing secrets
                 console.error('Login Error:', error);
-                alert('Login Error: ' + (error.message || 'Unknown error'));
                 
+                // Restore button state
                 loginBtn.textContent = 'Sign In';
                 loginBtn.disabled = false;
             }
