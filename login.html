@@ -65,14 +65,15 @@
     </main>
 
     <script type="module">
-        import login from './assets/js/auth.js';
-        import { API_BASE_URL } from './assets/js/config.js';
+        // FIX: Import the default export instead of a named export that doesn't exist
+        import auth from './assets/js/auth.js';
 
         const form = document.getElementById('login-form');
         const errorContainer = document.getElementById('login-error');
         const loginBtn = document.getElementById('login-btn');
 
         form.addEventListener('submit', async (e) => {
+            // This prevents the page from refreshing
             e.preventDefault();
             errorContainer.style.display = 'none';
             loginBtn.textContent = 'Signing in...';
@@ -82,16 +83,21 @@
             const password = document.getElementById('password').value;
 
             try {
-                // Call the auth module to handle backend login
-                const success = await login(email, password);
+                // Call the login function from the auth object
+                const success = await auth.login(email, password);
                 if (success) {
                     window.location.href = './pages/dashboard.html';
                 } else {
                     throw new Error('Authentication failed');
                 }
             } catch (error) {
+                // Show error on the page AND in an alert so you can see it on your phone
                 errorContainer.style.display = 'block';
                 errorContainer.textContent = error.message || 'Login failed. Check credentials.';
+                
+                console.error('Login Error:', error);
+                alert('Login Error: ' + (error.message || 'Unknown error'));
+                
                 loginBtn.textContent = 'Sign In';
                 loginBtn.disabled = false;
             }
