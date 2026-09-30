@@ -1,16 +1,16 @@
 import CONFIG from './config.js';
 
-/**
- * Authentication Module
- * Handles route protection and login/logout flows.
- */
-
 export async function checkAuthState() {
   const token = localStorage.getItem('authToken');
+  const path = window.location.pathname;
  
   if (!token) {
-    if (!window.location.pathname.includes('login.html') && !window.location.pathname.includes('index.html')) {
-      window.location.href = '../login.html';
+    // Prevent redirect loop if already on login or index
+    if (!path.includes('login.html') && !path.includes('index.html')) {
+      // Fix relative path based on current location
+      const isRoot = path.endsWith('/');
+      const baseUrl = window.location.origin + window.location.pathname.replace(/[^\/]*$/, '');
+      window.location.href = baseUrl + 'login.html';
     }
     return false;
   }
@@ -26,22 +26,36 @@ export async function login(email, password) {
     });
     
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.message || 'Invalid credentials');
+      let errorMessage = 'Login failed.';
+      if (response.status === 401) errorMessage = 'Invalid email or password.';
+      else if (response.status >= 500) errorMessage = 'The trading server encountered an error.';
+      else {
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (e) { /* Keep default error */ }
+      }
+      throw new Error(errorMessage);
     }
     
     const data = await response.json();
+    if (!data.token) throw new Error('Authentication server returned an invalid response.');
+    
     localStorage.setItem('authToken', data.token);
     return true;
   } catch (error) {
-    console.error('Login failed:', error);
+    console.error('Login failed:', error.message);
+    if (error.message === 'Failed to fetch' || error.message === 'Load failed') {
+      throw new Error('Unable to connect to the trading server.');
+    }
     throw error;
   }
 }
 
 export function logout() {
   localStorage.removeItem('authToken');
-  window.location.href = '../login.html';
+  const baseUrl = window.location.origin + window.location.pathname.replace(/[^\/]*$/, '');
+  window.location.href = baseUrl + 'login.html';
 }
 
 export default { checkAuthState, login, logout };
